@@ -1,7 +1,7 @@
 <?php
 function login()
 {
-$constr="host=localhost user=s45601 password=f5QZWqcn7";
+$constr="host=localhost user={username} password={password}";
 $conn=pg_connect($constr);
 if (!$conn )
  {

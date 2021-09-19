@@ -8,7 +8,7 @@
 <body>
 <?php
 //Uzupełnij string połączeniowy swoimi danymi
-$constr="host=localhost user=s45601 password=f5QZWqcn7";
+$constr="host=localhost user={username} password={password}";
 $conn=pg_connect($constr);
 if (!$conn ){
      print "Błąd: nie udało się połączyć z bazą<br>" ;
