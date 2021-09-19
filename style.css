@@ -1,0 +1,90 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#divKomentarz {
+	display: none;
+}
+
+/* nawigacja */
+.navbar {
+	background-color: #23415C;
+	padding: 1% 5%;
+	font-size: 1.2em;
+}
+.navbar-brand {
+	min-height: 55px;
+}
+.navbar-default .navbar-nav li a {
+	color: #D5D5D5;
+	transition: 0.3s;
+}
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:active {
+	color: #FFFFFF;
+}
+
+.logokino {
+	font-size: 200%;
+	font-style: italic;
+}
+
+#home {
+	background: url(img/background.jpg) no-repeat center center fixed;
+	display: table;
+	height: 100%;
+	position: relative;
+	width: 100%;
+	background-size: cover;
+}
+.landing-text {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.landing-text h1 {
+	font-size: 500%;
+	font-weight: 700;
+	color: #ffffff;
+}
+.landing-text h3 {
+	color: #ffffff;
+}
+
+.padding {
+	padding: 80px 0;
+}
+
+.padding img {
+	width: 80%;
+	height: 80%;
+}
+
+
+
+/* Obrazek fixed na stronie */
+#fixed {
+	background: url(img/background.jpg) no-repeat center center fixed;
+	display: table;
+	height: 60%;
+	position: relative;
+	width: 100%;
+	background-size: cover;
+}
+
+/* formularz */
+.formularz {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* responsywność */
+
+@media (max-width: 768px) {
+	.landing-text h1 {
+		font-size: 300%;
+	}
+}

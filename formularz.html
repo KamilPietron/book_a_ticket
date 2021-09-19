@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title> Formularz – Super Kino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+  <link href="style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="containter-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand logokino" href="#">Super Kino</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-main">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="active" href="index.html">Strona Główna</a></li>
+        <li><a href="formularz.html">Rezerwacja</a></li>
+        <li><a href="cennik.html">Cennik</a></li>
+        <li><a href="dane.php">Panel administracyjny</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="fixed">
+  <div class="landing-text">
+    <h1>Formularz Rezerwacji Biletów</h1>
+  </div>
+</div>
+
+
+<div class="formularz" >
+<form action="odbior.php" method="post" onSubmit="return check(formvalidate)" name="formvalidate">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="select">Wybierz seans:</label> 
+    <div class="col-8">
+      <select id="select" name="select" class="custom-select">
+        <option value="" selected disabled>-</option>
+        <option value="FWC">Faceci w Czerni</option>
+        <option value="SPO">Spongebob Kanciastoporty</option>
+        <option value="TAX">Taxi 3</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Podaj imię:</label> 
+    <div class="col-8">
+      <input id="imie" name="imie" type="text" class="form-control" pattern="[A-ZŁŻ][a-ząśćźżółń]{2,}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Podaj nazwisko:</label> 
+    <div class="col-8">
+      <input id="nazwisko" name="nazwisko" type="text" class="form-control" pattern="[A-ZŁŻ][a-ząśćźżółń]{2,}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Podaj email:</label> 
+    <div class="col-8">
+      <input id="email" name="email" type="email" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4">Rodzaj biletu:</label> 
+    <div class="col-8">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="bilet" id="biletNormalny" type="radio" class="custom-control-input" value="normalny"> 
+        <label class="custom-control-label">Normalny</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="bilet" id="biletUlgowy" type="radio" class="custom-control-input" value="ulgowy"> 
+        <label class="custom-control-label">Ulgowy</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Podaj ile chcesz zakupić biletów:</label> 
+    <div class="col-8">
+      <input id="ileBiletow" name="ileBiletow" type="number" min="1" max="99" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Podaj datę seansu:</label> 
+    <div class="col-8">
+      <input id="date" name="date" type="date" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4">Czy chcesz dodać komentarz?:</label> 
+    <div class="col-8">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="komentarz" id="tak" type="radio" class="custom-control-input" value="tak" onclick="ShowHideDiv()"> 
+        <label class="custom-control-label">Tak</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="komentarz" id="nie" type="radio" class="custom-control-input" value="nie" onclick="ShowHideDiv()"> 
+        <label class="custom-control-label">Nie</label>
+      </div>
+    </div>
+  </div>
+    <div class="form-group row" id="divKomentarz">
+    <label class="col-4 col-form-label">Komentarz:</label> 
+    <div class="col-8">
+      <textarea name="komentarzTak" id="komentarz"></textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4">Wybierz jedzenie lub picie(opcjonalne):</label> 
+    <div class="col-8">
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="jedzenie" id="jedzenie1" type="checkbox" class="custom-control-input" value="Popcorn"> 
+        <label class="custom-control-label">Popcorn</label>
+        <input name="jedzenie" id="jedzenie2" type="checkbox" class="custom-control-input" value="Cola"> 
+        <label class="custom-control-label">Cola</label>
+        <input name="jedzenie" id="jedzenie3" type="checkbox" class="custom-control-input" value="Nachosy"> 
+        <label class="custom-control-label">Nachosy</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <button name="submit" type="submit" class="btn btn-primary" >Wyślij</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<script>
+
+function check(myform){
+
+  if (!(myform.select.value==="FWC" || myform.select.value==="SPO" || myform.select.value==="TAX"))
+  {
+    alert('Wybierz seans.')
+    myform.select.focus();
+    return false
+    
+  }
+ if (myform.imie.value == "" || myform.imie.value == null)
+ {
+   alert("Podaj imię");
+   return false;
+ }
+  if (myform.nazwisko.value == "" || myform.nazwisko.value == null)
+ {
+   alert("Podaj nazwisko");
+   return false;
+ }
+ if(myform.email.value == "" || myform.email.value == null)
+    {
+      alert("Podaj adres email");
+      return false;
+    }
+if(!document.getElementById("biletNormalny").checked&&!document.getElementById( "biletUlgowy" ).checked){ 
+  alert("Proszę wybierz rodzaj biletu")
+  return false
+  }
+if(myform.ileBiletow.value == "" || myform.ileBiletow.value == null)
+    {
+      alert("Podaj ilość biletów, które chcesz zakupić");
+      return false;
+    }
+if (!document.getElementById('date').value) {
+    alert('Podaj datę rezerwacji');
+    return false;
+}
+if(!document.getElementById("tak").checked&&!document.getElementById( "nie" ).checked){ 
+  alert("Wybierz czy chcesz dodać komentarz")
+  return false
+  }
+
+var UserDate = document.getElementById("date").value;
+var ToDate = new Date();
+  
+if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+    alert("Nie można dokonać rezerwacji na dzisiaj lub na datę w przeszłości. Wybierz inną datę.");
+    return false;
+}
+    else{
+      return true;
+    }
+  }
+
+function ShowHideDiv() {
+        var tak= document.getElementById("tak");
+        var divKomentarz = document.getElementById("divKomentarz");
+        divKomentarz.style.display = tak.checked ? "block" : "none";
+    }
+</script>
+</body>
+</html>
